@@ -1,0 +1,19 @@
+# Entornos virtuales
+venv/
+venv_scrap/
+venv_scraping/
+env/
+
+# Archivos de sistema de Mac
+.DS_Store
+
+# Cache de Python
+__pycache__/
+*.pyc
+
+# Archivos de datos (opcional, si no quieres subir el CSV)
+*.csv
+
+# Archivos de configuración de editores
+.vscode/
+.idea/
