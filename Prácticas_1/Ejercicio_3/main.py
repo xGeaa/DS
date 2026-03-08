@@ -1,8 +1,7 @@
 # ============================================================
 # Nombre del archivo: main.py
 # Asignatura: Desarrollo del Software
-# Grupo de Prácticas: 3
-# Autor: Alejandro Gea Martínez     
+# Grupo de Prácticas: 3    
 # Fecha de creación: 04/03/2026
 # Descripción: Este archivo es el main del proyecto donde se gestiona la interacción con el usuario y se ejecutan las estrategias de scrap.
 # Versión: 1.0
