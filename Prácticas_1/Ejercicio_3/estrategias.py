@@ -1,11 +1,11 @@
 # ============================================================
-# Nombre del archivo: 
-# Autor: 
-# Fecha de creación: 
-# Descripción: 
-# Versión: 
-# Dependencias: 
-# Notas adicionales: 
+# Nombre del archivo: main.py
+# Asignatura: Desarrollo del Software
+# Grupo de Prácticas: 3    
+# Fecha de creación: 04/03/2026
+# Descripción: Este archivo es el main del proyecto donde se gestiona la interacción con el usuario y se ejecutan las estrategias de scrap.
+# Versión: 1.0
+# Dependencias: estrategias.py
 # ============================================================
 
 from abc import ABC, abstractmethod
