@@ -1,0 +1,7 @@
+{
+    "texto": "Brawl Stars is a popular multiplayer mobile game developed by Supercell. Players choose from many different characters called brawlers, each with unique abilities and playstyles. The objective of the game depends on the mode being played, but it usually involves cooperating with teammates to defeat opponents or complete objectives. The game is known for its fast-paced matches, colorful graphics, and constant updates that introduce new brawlers, skins, and events. Many players enjoy experimenting with different strategies and learning how to use each brawler effectively. Some players believe that certain brawlers become very strong after balance changes, which can make them dominant in the current meta.",
+    "model_llm": "facebook/bart-large-cnn",
+    "model_translation": "Helsinki-NLP/opus-mt-en-es",
+    "model_sentiment": "nlptown/bert-base-multilingual-uncased-sentiment",
+    "huggingface_api_token": "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"
+}
