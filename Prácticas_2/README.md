@@ -38,4 +38,3 @@ El propósito de esta práctica es profundizar en la capacidad de adaptar y ampl
     * `LengthLimitDecorator`: Limita la verbosidad de la IA (máx. 200 caracteres).
 * **Funcionalidad UI:** Pantalla de selección de dificultad (combinatoria de decoradores) y chat interactivo con el guardián.
 
-   git clone [URL_DEL_REPOSITORIO]
