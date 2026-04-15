@@ -1,0 +1,1 @@
+@rpath/ejercicio_grupal_2.debug.dylib
