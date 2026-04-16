@@ -20,8 +20,6 @@ class KeywordBlockDecorator extends SecretKeeperDecorator{
     final messageLower = userMessage.toLowerCase();
     for (var word in blackList) {
       if (messageLower.contains(word)) {
-        // Si detectamos una palabra prohibida, CORTAMOS aquí.
-        // No llamamos a super.ask(), por lo tanto, la IA nunca recibe el mensaje.
         return "¡ALTO AHÍ! He detectado la palabra prohibida '$word'. ¡No intentes manipularme!";
       }
     }
