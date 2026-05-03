@@ -7,7 +7,7 @@ class ServicioHotel extends ServicioTuristico{
   final int noches;
   PoliticaHotel politica;
 
-  ServicioHotel(this.nombre, this.precioNoche, this.noches, this.politica);
+  ServicioHotel(this.nombre, this.precioNoche, this.noches, this.politica) : assert(noches > 0, 'Las noches deben ser más de cero');
 
   @override
   double getPrecio(){

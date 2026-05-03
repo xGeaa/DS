@@ -6,7 +6,7 @@ class ServicioVuelo extends ServicioTuristico {
   final double precioBase;
   PoliticaVuelo politica;
 
-  ServicioVuelo(this.id, this.precioBase, this.politica);
+  ServicioVuelo(this.id, this.precioBase, this.politica) : assert(precioBase >= 0, 'El precio no puede ser negativo');
 
   @override
   double getPrecio(){
