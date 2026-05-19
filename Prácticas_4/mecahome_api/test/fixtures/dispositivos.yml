@@ -1,0 +1,20 @@
+luz_salon:
+  nombre: "Luz Salon"
+  tipo: "iluminacion"
+  marca: "philips"
+  estado: "off"
+
+enchufe_cocina:
+  nombre: "Enchufe Cocina"
+  tipo: "enchufe"
+  marca: "xiaomi"
+  estado: "on"
+
+aire_acondicionado:
+  nombre: "Aire Principal"
+  tipo: "climatizacion"
+  marca: "nest"
+  estado: "off"
+  temperatura_actual: 25.0
+  temperatura_deseada: 22.0
+  modo_clima: "eco"
