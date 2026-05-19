@@ -1,6 +1,6 @@
 # Prácticas de Desarrollo de Software (Curso 2025-2026) 🚀
 
-Este repositorio contiene el desarrollo completo de las prácticas de la asignatura **Desarrollo de Software** del 3º curso del Grado en Ingeniería Informática en la Escuela Técnica Superior de Ingeniería Informática y de Telecomunicación (ETSIIT), Universidad de Granada (UGR).
+Este repositorio contiene el desarrollo completo de las prácticas de la asignatura **Desarrollo de Software** del Grado en Ingeniería Informática en la Escuela Técnica Superior de Ingeniería Informática y de Telecomunicación (ETSIIT), Universidad de Granada (UGR).
 
 El objetivo central de este repositorio es demostrar la asimilación de competencias en arquitectura de software, modelado de sistemas relacionales, pruebas de software automatizadas y, fundamentalmente, la correcta aplicación práctica de los patrones de diseño de la metodología GoF (Gang of Four).
 
