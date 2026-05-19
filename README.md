@@ -29,7 +29,8 @@ Ejercicios independientes orientados a la implementación de patrones GoF puros 
 
 ### 📁 Práctica 2: Arquitecturas Multiplataforma y Mantenimiento Adaptativo
 Migración hacia tecnologías móviles y reactivas potenciando el mantenimiento perfectivo de código heredado:
-* **Individuales (Flutter):** * Calculadora de proyecciones financieras financiera estructurada mediante **Factory Method**.
+* **Individuales (Flutter):**  
+  * Calculadora de proyecciones financieras financiera estructurada mediante **Factory Method**.
   * Gestor reactivo de costos de suscripciones mensuales.
 * **Grupales (Flutter):**
   * Mantenimiento adaptativo y sistema de notificaciones sobre el interceptor de filtros de la P1.
