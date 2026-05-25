@@ -21,7 +21,6 @@ class Dispositivo {
     this.luminosidad
   });
 
-  // Constructor para transformar el JSON que viene de Rails a un Objeto de Flutter
   factory Dispositivo.fromJson(Map<String, dynamic> json) {
     return Dispositivo(
       id: json['id'],

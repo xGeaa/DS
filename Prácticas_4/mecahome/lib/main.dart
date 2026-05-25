@@ -14,8 +14,12 @@ class MyApp extends StatelessWidget {
       title: 'MecaHome',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
         useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFF1E3A8A), // Azul marino
+          brightness: Brightness.light,
+        ),
+        scaffoldBackgroundColor: const Color(0xFFF8FAFC), // Fondo gris claro
       ),
       home: const HomeScreen(),
     );
