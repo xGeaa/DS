@@ -46,15 +46,15 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(width: 10),
             Expanded(
               child: const Text(
-                'Desvincular Hardware',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.white)
+                  'Desvincular Hardware',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.white)
               ),
             ),
           ],
         ),
         content: Text(
-          'Esta acción eliminará "${dispositivo.nombre}" permanentemente de tu red.',
-          style: TextStyle(color: Colors.grey.shade400, fontSize: 13)
+            'Esta acción eliminará "${dispositivo.nombre}" permanentemente de tu red.',
+            style: TextStyle(color: Colors.grey.shade400, fontSize: 13)
         ),
         actions: [
           TextButton(
@@ -64,10 +64,10 @@ class _HomeScreenState extends State<HomeScreen> {
           FilledButton(
             onPressed: () => Navigator.pop(context, true),
             style: FilledButton.styleFrom(
-              backgroundColor: Colors.redAccent.withOpacity(0.15),
-              foregroundColor: Colors.redAccent,
-              elevation: 0,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
+                backgroundColor: Colors.redAccent.withOpacity(0.15),
+                foregroundColor: Colors.redAccent,
+                elevation: 0,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
             ),
             child: const Text('Eliminar', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
           ),
@@ -153,7 +153,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   DropdownMenuItem(value: 'iluminacion', child: Text('Iluminación')),
                   DropdownMenuItem(value: 'climatizacion', child: Text('Climatización')),
                   DropdownMenuItem(value: 'energia', child: Text('Gestión de Energía')),
-                  DropdownMenuItem(value: 'persiana', child: Text('Persiana')), // Mantenemos tu integración
+                  DropdownMenuItem(value: 'persiana', child: Text('Persiana')),
                 ],
                 onChanged: (val) => setModalState(() => tipoSeleccionado = val!),
               ),
@@ -196,7 +196,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       'estado': 'off',
                     };
 
-                    final listaActual = await _futureDispositivos; // Conservamos la sincronización inteligente
+                    final listaActual = await _futureDispositivos;
 
                     if (tipoSeleccionado == 'climatizacion') {
                       final ultimoAire = listaActual.firstWhere(
@@ -297,8 +297,8 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisSize: MainAxisSize.min,
           children: [
             const Align(
-              alignment: Alignment.centerLeft,
-              child: Text('Aplica los parámetros a toda la red:', style: TextStyle(color: Colors.white54, fontSize: 12))
+                alignment: Alignment.centerLeft,
+                child: Text('Aplica los parámetros a toda la red:', style: TextStyle(color: Colors.white54, fontSize: 12))
             ),
             const SizedBox(height: 16),
             TextField(
@@ -375,7 +375,11 @@ class _HomeScreenState extends State<HomeScreen> {
               Container(width: 40, height: 4, decoration: BoxDecoration(color: Colors.white24, borderRadius: BorderRadius.circular(2))),
               const SizedBox(height: 24),
               Text(dispositivo.nombre, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600, letterSpacing: -0.5, color: Colors.white)),
-              const Text('Control de Climatización', style: TextStyle(color: Colors.white54, fontWeight: FontWeight.w400, fontSize: 12)),
+
+              Text(
+                  'Ambiente real: ${dispositivo.temperaturaActual ?? 24.0}°C',
+                  style: const TextStyle(color: Color(0xFF06B6D4), fontWeight: FontWeight.w600, fontSize: 13, letterSpacing: 0.2)
+              ),
               const SizedBox(height: 40),
 
               Container(
@@ -440,7 +444,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     ButtonSegment(value: 'confort', label: Text('CONFORT', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600))),
                     ButtonSegment(value: 'vacaciones', label: Text('VACACIONES', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600))),
                   ],
-                  // Blindamos con .toLowerCase() para evitar descalces visuales con la BD
                   selected: {dispositivo.modoClima?.toLowerCase() ?? 'eco'},
                   onSelectionChanged: (Set<String> nuevoModo) {
                     _cambiarModoClima(dispositivo, nuevoModo.first);
@@ -500,7 +503,6 @@ class _HomeScreenState extends State<HomeScreen> {
         child: SafeArea(
           child: Column(
             children: [
-              // CABECERA SUPERIOR (Header)
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 20.0),
                 child: Row(
@@ -516,7 +518,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     Row(
                       children: [
-                        // 🔥 INTEGRADO: Tu botón del Sol Global integrado limpiamente en la cabecera
                         IconButton(
                           icon: const Icon(Icons.wb_sunny_rounded, color: Colors.orangeAccent, size: 22),
                           onPressed: _mostrarFormularioEntornoGlobal,
@@ -545,7 +546,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
 
-              // PANEL DE DISPOSITIVOS
               Expanded(
                 child: FutureBuilder<List<Dispositivo>>(
                   future: _futureDispositivos,
@@ -576,26 +576,27 @@ class _HomeScreenState extends State<HomeScreen> {
                         final dispositivo = listaDispositivos[index];
                         final bool isOn = dispositivo.estado == 'on';
 
-                        // Colores Neón e Iconos dinámicos unificados
-                        Color brandColor = const Color(0xFF10B981); // Verde Energía
+                        Color brandColor = const Color(0xFF10B981);
                         IconData iconData = Icons.power_rounded;
                         String statusText = isOn ? 'ON' : 'OFF';
 
                         if (dispositivo.tipo == 'climatizacion') {
-                          brandColor = const Color(0xFF06B6D4); // Cyan Clima
+                          brandColor = const Color(0xFF06B6D4);
                           iconData = Icons.ac_unit_rounded;
-                          statusText = isOn ? '${dispositivo.temperaturaDeseada}°' : 'OFF';
+                          statusText = isOn
+                              ? '${dispositivo.temperaturaActual ?? 24.0}° (Obj: ${dispositivo.temperaturaDeseada ?? 21.0}°)'
+                              : 'OFF';
                         } else if (dispositivo.tipo == 'iluminacion') {
-                          brandColor = const Color(0xFFF59E0B); // Ámbar Luz
+                          brandColor = const Color(0xFFF59E0B);
                           iconData = Icons.lightbulb_outline_rounded;
                         } else if (dispositivo.tipo == 'persiana') {
-                          brandColor = const Color(0xFFA855F7); // Morado Persiana
+                          brandColor = const Color(0xFFA855F7);
                           iconData = Icons.blinds_rounded;
-                          statusText = isOn ? 'ABIERTA' : 'CERRADA';
+                          statusText = isOn ? 'CERRADA' : 'ABIERTA';
                         }
 
                         return ClipRRect(
-                          key: ValueKey(dispositivo.id), // Solucionado: Key en la raíz para evitar fallos de reordenación o borrado
+                          key: ValueKey(dispositivo.id),
                           borderRadius: BorderRadius.circular(16),
                           child: BackdropFilter(
                             filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),

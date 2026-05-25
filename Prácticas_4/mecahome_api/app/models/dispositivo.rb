@@ -66,31 +66,26 @@ end
   def automatizar_iluminacion
     return if luminosidad.nil?
 
-    # Determinamos el estado según el umbral global
     nuevo_estado = luminosidad < 50 ? 'on' : 'off'
     self.estado = nuevo_estado
 
-    # Buscamos el resto de bombillas y las actualizamos en lote masivo (update_all)
-    # Usamos update_all porque modifica la BD directamente saltándose los callbacks, evitando bucles infinitos.
     bombillas = Dispositivo.where(tipo: 'iluminacion')
     bombillas = bombillas.where.not(id: id) if id.present?
     bombillas.update_all(luminosidad: luminosidad, estado: nuevo_estado)
   end
 
-  # ❄️ SOLUCIÓN GLOBAL: Suma las potencias de todos los aires encendidos y aplica el cambio a todos
+
   def simular_climatizacion
     return if temperatura_actual.nil? || temperatura_deseada.nil?
 
-    # 1. Evaluamos si ESTE aire debe encenderse o apagarse
     self.estado = debe_encender_clima? ? 'on' : 'off'
 
-    # 2. Recopilamos todos los aires que van a estar encendidos ('on') en este instante
     aires_on = Dispositivo.where(tipo: 'climatizacion', estado: 'on')
-    aires_on = aires_on.where.not(id: id) if id.present? # Excluimos el registro actual de la BD
+    aires_on = aires_on.where.not(id: id) if id.present?
     aires_on = aires_on.to_a
-    aires_on << self if self.estado == 'on' # Añadimos el actual si se va a encender
+    aires_on << self if self.estado == 'on'
 
-    # 3. ¡Aquí está tu lógica! Sumamos el "paso" (potencia) de TODOS los aires que estén encendidos
+
     paso_total = 0.0
     aires_on.each do |aire|
       paso_total += case aire.modo_clima&.downcase
@@ -101,7 +96,6 @@ end
                     end
     end
 
-    # 4. Si hay aires encendidos trabajando juntos, alteramos la temperatura común de la casa
     if paso_total > 0
       nueva_temp = temperatura_actual
       if temperatura_actual > temperatura_deseada
@@ -110,7 +104,6 @@ end
         nueva_temp = (temperatura_actual + paso_total).round(1)
       end
 
-      # 5. Forzamos a que TODOS los aires de la casa adopten la nueva temperatura ambiente
       self.temperatura_actual = nueva_temp
       aires_restantes = Dispositivo.where(tipo: 'climatizacion')
       aires_restantes = aires_restantes.where.not(id: id) if id.present?
