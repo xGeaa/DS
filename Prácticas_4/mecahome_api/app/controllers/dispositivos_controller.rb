@@ -48,7 +48,7 @@ class DispositivosController < ApplicationController
 
   # Permisos estrictos de Rails para evitar inyecciones maliciosas
   def dispositivo_params
-    params.require(:dispositivo).permit(:nombre, :tipo, :marca, :estado, :temperatura_actual, :temperatura_deseada, :modo_clima)
+    params.require(:dispositivo).permit(:nombre, :tipo, :marca, :estado, :temperatura_actual, :temperatura_deseada, :modo_clima, :luminosidad)
   end
 end
 

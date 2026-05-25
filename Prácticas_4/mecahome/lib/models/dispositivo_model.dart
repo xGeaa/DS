@@ -3,10 +3,11 @@ class Dispositivo {
   final String nombre;
   final String tipo;
   final String marca;
-  final String estado;
-  final double? temperaturaActual;
+   String? estado;
+   double? temperaturaActual;
   double? temperaturaDeseada;
   final String? modoClima;
+  int? luminosidad;
 
   Dispositivo({
     required this.id,
@@ -17,6 +18,7 @@ class Dispositivo {
     this.temperaturaActual,
     this.temperaturaDeseada,
     this.modoClima,
+    this.luminosidad
   });
 
   // Constructor para transformar el JSON que viene de Rails a un Objeto de Flutter
@@ -30,6 +32,7 @@ class Dispositivo {
       temperaturaActual: json['temperatura_actual']?.toDouble(),
       temperaturaDeseada: json['temperatura_deseada']?.toDouble(),
       modoClima: json['modo_clima'],
+      luminosidad: json['luminosidad'],
     );
   }
 }
